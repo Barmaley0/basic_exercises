@@ -12,7 +12,9 @@ students = [
     {'first_name': 'Маша'},
     {'first_name': 'Петя'},
 ]
-# ???
+print("Вася:", students.count({'first_name': 'Вася'}))
+print("Маша:", students.count({'first_name': 'Маша'}))
+print("Петя:", students.count({'first_name': 'Петя'}))
 
 
 # Задание 2
@@ -26,7 +28,13 @@ students = [
     {'first_name': 'Маша'},
     {'first_name': 'Оля'},
 ]
-# ???
+lists = []
+for values in students:
+    lists.append(values['first_name'])
+for item in lists:
+    if lists.count(item) > 1:
+        print(f"Частое имя среди учеников: {item}.")
+        break
 
 
 # Задание 3
@@ -51,7 +59,22 @@ school_students = [
         {'first_name': 'Саша'},
     ],
 ]
-# ???
+CLASS_NUM_1 = 0
+CLASS_NUM_2 = 1
+CLASS_NUM_3 = 2
+
+def class_number(school_student, num_class):
+    list1 = []
+    for item1 in range(len(school_student[num_class])):
+        list1.append(school_students[num_class][item1]['first_name'])
+    for value1 in list1:
+        if list1.count(value1) > 1:
+            print(f"Частое имя в классе {num_class + 1}: {value1}.")
+            break
+
+class_number(school_students, CLASS_NUM_1)
+class_number(school_students, CLASS_NUM_2)
+class_number(school_students, CLASS_NUM_3)
 
 
 # Задание 4
@@ -72,8 +95,24 @@ is_male = {
     'Миша': True,
     'Даша': False,
 }
-# ???
+CLASS_2A = 0
+CLASS_2B = 1
+CLASS_2V = 2
 
+def name_list(school1, class_num, is_mal):
+    boys = 0
+    girls = 0
+    name = school1[class_num]["students"]
+    for val in name:
+        if is_mal[val["first_name"]] is False:
+            girls += 1
+        elif is_mal[val["first_name"]] is True:
+            boys += 1
+    print(f"Класс {school1[class_num]['class']}: девочки {girls}, мальчики {boys}")
+
+name_list(school,CLASS_2A, is_male)
+name_list(school,CLASS_2B, is_male)
+name_list(school,CLASS_2V, is_male)
 
 # Задание 5
 # По информации о учениках разных классов нужно найти класс, в котором больше всего девочек и больше всего мальчиков
@@ -91,5 +130,23 @@ is_male = {
     'Олег': True,
     'Миша': True,
 }
-# ???
+CLASS_2A = 0
+CLASS_3C = 1
+
+def class_list(school2, class_numb, is_males):
+    boys = 0
+    girls = 0
+    name = school2[class_numb]["students"]
+    for val in name:
+        if is_males[val["first_name"]] is False:
+            girls += 1
+        elif is_males[val["first_name"]] is True:
+            boys += 1
+    if girls > boys:
+        print(f"Больше всего девочек в классе {school2[class_numb]['class']}")
+    elif boys > girls:
+        print(f"Больше всего мальчиков в классе {school2[class_numb]['class']}")
+
+class_list(school, CLASS_2A, is_male)
+class_list(school, CLASS_3C, is_male)
 
