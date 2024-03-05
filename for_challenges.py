@@ -27,9 +27,9 @@ is_male = {
 }
 names = ['Оля', 'Петя', 'Вася', 'Маша']
 for name in names:
-    if is_male[name] is False:
+    if is_male[name]:
         print(f"{name}: пол женский.")
-    elif is_male[name] is True:
+    else:
         print(f"{name}: пол мужской.")
 
 # Задание 4
@@ -44,6 +44,7 @@ groups = [
     ['Вася', 'Маша', 'Саша', 'Женя'],
     ['Оля', 'Петя', 'Гриша'],
 ]
+print(f"Всего {len(groups)} группы.")
 num_group = 0
 for group in groups:
     num_group += 1

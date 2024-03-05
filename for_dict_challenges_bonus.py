@@ -66,5 +66,31 @@ def generate_chat_history():
     return messages
 
 
+
+
 if __name__ == "__main__":
-    print(generate_chat_history())
+    dict_chat = generate_chat_history()
+
+    def id_user_max_message_sent(messages):
+        dict_count = {}
+        for message in messages:
+            if message["sent_by"] not in dict_count.keys():
+                dict_count[message["sent_by"]] = 1
+            else:
+                dict_count[message["sent_by"]] += 1
+        print(f"Айди пользователя, который написал больше всего сообщений: {max(dict_count, key=dict_count.get)}")
+
+    def id_user_max_message_reply(messages):
+        dict_count = {}
+        for message in messages:
+            if message["reply_for"] is None:
+                continue
+            if message["reply_for"] not in dict_count.keys():
+                dict_count[message["reply_for"]] = 1
+            else:
+                dict_count[message["reply_for"]] += 1
+        print(f"Айди пользователя, на сообщение которого больше всего отвечали: {max(dict_count, key=dict_count.get)}")
+
+
+    id_user_max_message_sent(dict_chat)
+    id_user_max_message_reply(dict_chat)
